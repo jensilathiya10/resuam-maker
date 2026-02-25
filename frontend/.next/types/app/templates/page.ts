@@ -1,8 +1,8 @@
-// File: D:\resume_maker\frontend\src\app\templates\page.tsx
-import * as entry from '../../../../src/app/templates/page.js'
+// File: D:\resume_maker\frontend\app\templates\page.tsx
+import * as entry from '../../../../app/templates/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
-type TEntry = typeof import('../../../../src/app/templates/page.js')
+type TEntry = typeof import('../../../../app/templates/page.js')
 
 // Check that the entry is a valid entry
 checkFields<Diff<{
