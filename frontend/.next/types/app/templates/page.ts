@@ -1,4 +1,4 @@
-// File: D:\resuam maker\frontend\src\app\templates\page.tsx
+// File: D:\resume_maker\frontend\src\app\templates\page.tsx
 import * as entry from '../../../../src/app/templates/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
