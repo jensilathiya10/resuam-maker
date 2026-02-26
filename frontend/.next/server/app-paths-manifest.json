@@ -1,4 +1,11 @@
 {
+  "/_not-found": "app/_not-found.js",
+  "/create-resume/page": "app/create-resume/page.js",
+  "/login/page": "app/login/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
+  "/ai-generate/page": "app/ai-generate/page.js",
   "/templates/page": "app/templates/page.js",
-  "/page": "app/page.js"
+  "/page": "app/page.js",
+  "/editor/page": "app/editor/page.js",
+  "/register/page": "app/register/page.js"
 }
