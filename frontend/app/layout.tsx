@@ -3,6 +3,7 @@ import './globals.css';
 import { Header } from '@/components/layouts/Header';
 import { Footer } from '@/components/layouts/Footer';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
   title: 'ResumeAI - AI-Powered Resume Builder',
@@ -25,6 +26,7 @@ export default function RootLayout({
           <Header />
           <main className="pt-16">
             {children}
+            <Analytics/>
           </main>
           <Footer />
         </ThemeProvider>
