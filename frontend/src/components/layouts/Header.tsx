@@ -9,7 +9,7 @@ import { useAuthStore } from '@/stores/authStore';
 import { useUIStore } from '@/stores/uiStore';
 import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
-
+import Image from 'next/image';
 export function Header() {
   const pathname = usePathname();
   const { user, isAuthenticated, logout } = useAuthStore();
@@ -33,7 +33,13 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-gradient-to-br from-primary-600 to-primary-400 rounded-lg flex items-center justify-center">
-              <FileText className="w-5 h-5 text-white" />
+              <Image
+                src="/logo.jpg"      // path in public folder
+                alt="ResumeAI Logo"  // accessibility
+                width={32}           // match the parent div width
+                height={32}          // match the parent div height
+                className="object-cover"
+              />
             </div>
             <span className="text-xl font-bold text-gray-900 dark:text-white">
               ResumeAI
