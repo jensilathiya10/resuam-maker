@@ -8,22 +8,26 @@ import { FileText, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Card, CardContent } from '@/components/ui/Card';
 import { useAuthStore } from '@/stores/authStore';
+import Image from 'next/image';
 
 const templates = [
   {
     id: 'modern',
+    image:"/templates/template1.png",
     name: 'Modern Pro',
     description: 'Clean and professional corporate template with a modern touch. Perfect for traditional industries.',
     features: ['Traditional layout', 'Left sidebar for contact', 'Professional typography'],
   },
   {
     id: 'minimal',
+    image:"/templates/template2.png",
     name: 'Minimal Elegant',
     description: 'Minimalist design with plenty of white space. Stands out through simplicity and clarity.',
     features: ['Modern layout', 'Plenty of white space', 'Sans-serif typography'],
   },
   {
     id: 'creative',
+    image:"/templates/template3.png",
     name: 'Creative Designer',
     description: 'Bold and creative template for design roles. Show off your creativity while staying professional.',
     features: ['Bold accent colors', 'Modern layout', 'Portfolio-focused'],
@@ -72,9 +76,13 @@ export default function TemplatesPage() {
               <Card hover className="h-full">
                 <CardContent className="p-6">
                   {/* Preview */}
-                  <div className="aspect-[3/4] bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 rounded-lg mb-4 flex items-center justify-center relative overflow-hidden">
-                    <div className="absolute inset-0 bg-grid-pattern opacity-30" />
-                    <FileText className="w-16 h-16 text-gray-400 z-10" />
+                  <div className="aspect-[3/4] rounded-lg mb-4 overflow-hidden relative">
+                    <Image
+                      src={template.image}
+                      alt={template.name}
+                      fill
+                      className="object-cover"
+                    />
                   </div>
 
                   {/* Info */}
@@ -96,9 +104,9 @@ export default function TemplatesPage() {
                   </ul>
 
                   {/* CTA */}
-                  <Button 
-                    variant="outline" 
-                    className="w-full" 
+                  <Button
+                    variant="outline"
+                    className="w-full"
                     onClick={() => handleUseTemplate(template.id)}
                   >
                     Use Template
@@ -110,9 +118,9 @@ export default function TemplatesPage() {
         </div>
 
         {!isAuthenticated && (
-          <motion.div 
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: 1 }} 
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
             className="text-center mt-12 p-6 bg-primary-50 dark:bg-primary-900/20 rounded-2xl border border-primary-200 dark:border-primary-800"
           >

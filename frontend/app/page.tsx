@@ -7,6 +7,7 @@ import { ArrowRight, Check, FileText, Sparkles, Download, Layout } from 'lucide-
 import { Button } from '@/components/ui/Button';
 import { Card, CardContent } from '@/components/ui/Card';
 import { useUIStore } from '@/stores/uiStore';
+import Image from 'next/image';
 
 const features = [
   {
@@ -34,16 +35,19 @@ const features = [
 const templates = [
   {
     id: 'modern',
+    image:'/templates/template1.png',
     name: 'Modern Pro',
     description: 'Clean and professional corporate template',
   },
   {
     id: 'minimal',
+    image:'/templates/template2.png',
     name: 'Minimal Elegant',
     description: 'Minimalist design with plenty of white space',
   },
   {
     id: 'creative',
+    image:'/templates/template3.png',
     name: 'Creative Designer',
     description: 'Bold and creative template for design roles',
   },
@@ -244,16 +248,21 @@ export default function HomePage() {
               >
                 <Card hover className="h-full">
                   <CardContent className="p-6">
-                    <div className="aspect-[3/4] bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 rounded-lg mb-4 flex items-center justify-center">
-                      <FileText className="w-16 h-16 text-gray-400" />
-                    </div>
+                    <div className="aspect-[3/4] rounded-lg mb-4 overflow-hidden relative">
+                                        <Image
+                                          src={template.image}
+                                          alt={template.name}
+                                          fill
+                                          className="object-cover"
+                                        />
+                                      </div>
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
                       {template.name}
                     </h3>
                     <p className="text-gray-600 dark:text-gray-400 mb-4">
                       {template.description}
                     </p>
-                    <Link href="/templates">
+                    <Link href={`/editor?template=${template.id || ''}`}>
                       <Button variant="outline" className="w-full">
                         Use Template
                       </Button>

@@ -19,7 +19,7 @@ export interface Experience {
   _id?: string;
   jobTitle: string;
   company: string;
-  location: string;
+  location?: string;
   startDate: string;
   endDate: string;
   description: string[];

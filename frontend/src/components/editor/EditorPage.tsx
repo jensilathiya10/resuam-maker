@@ -46,7 +46,7 @@ type AIResumeVariant = {
   experience: Array<{
     jobTitle: string;
     company: string;
-    location: string;
+    location?: string;
     startDate: string;
     endDate: string;
     description: string[];
@@ -263,9 +263,9 @@ export default function EditorPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-slate-800 mt-20 flex flex-col">
+    <div className="min-h-screen bg-gray-100 dark:bg-slate-800 flex flex-col">
       {/* Header */}
-      <header className="bg-white dark:bg-slate-900 border-b border-gray-200 dark:border-gray-700 px-4 py-3 flex items-center justify-between sticky top-0 z-10">
+      <header className="bg-white dark:bg-slate-900 border-b border-gray-200 dark:border-gray-700 px-4 py-3 flex items-center justify-between sticky top-14 z-10">
         <div className="flex items-center space-x-4">
           <Button variant="ghost" size="sm" onClick={() => router.push('/dashboard')}>
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -518,7 +518,7 @@ export default function EditorPage() {
         </div>
 
         {/* Right Panel - Preview */}
-        <div className="w-1/2 bg-gray-200 sticky top-[50px]  dark:bg-slate-900 p-6 overflow-y-auto h-fit flex justify-center">
+        <div className="w-1/2 bg-gray-200 sticky top-28  dark:bg-slate-900 p-6 overflow-y-auto h-fit flex justify-center">
           <div className="bg-white w-[210mm] min-h-[297mm] shadow-2xl transform scale-90 origin-top">
             {/* Modern/Classic Template */}
             {template === 'modern' && (

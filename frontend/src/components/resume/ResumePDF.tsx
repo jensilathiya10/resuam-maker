@@ -271,10 +271,10 @@ interface MinimalTemplateProps {
 }
 
 const MinimalTemplate: React.FC<MinimalTemplateProps> = ({ resumeData }) => {
-  const { personalInfo, summary, experience, skills } = resumeData;
+  const { personalInfo, summary, experience, skills, education, projects, certifications } = resumeData;
 
   return (
-    <View style={pageStyle}>
+    <View style={pageStyle.page}>
       {/* Header */}
       <View style={{ marginBottom: 24 }}>
         <Text style={{ fontSize: 28, fontWeight: 300, color: '#111827', marginBottom: 4 }}>
@@ -284,6 +284,8 @@ const MinimalTemplate: React.FC<MinimalTemplateProps> = ({ resumeData }) => {
           {personalInfo.email && <Text style={{ fontSize: 10, color: '#6B7280' }}>{personalInfo.email}</Text>}
           {personalInfo.phone && <Text style={{ fontSize: 10, color: '#6B7280' }}>{personalInfo.phone}</Text>}
           {personalInfo.location && <Text style={{ fontSize: 10, color: '#6B7280' }}>{personalInfo.location}</Text>}
+          {personalInfo.linkedin && <Text style={{ fontSize: 10, color: '#6B7280' }}>LinkedIn: {personalInfo.linkedin}</Text>}
+          {personalInfo.portfolio && <Text style={{ fontSize: 10, color: '#6B7280' }}>Portfolio: {personalInfo.portfolio}</Text>}
         </View>
       </View>
 
@@ -305,17 +307,76 @@ const MinimalTemplate: React.FC<MinimalTemplateProps> = ({ resumeData }) => {
                 <Text style={{ fontSize: 11, fontWeight: 500, color: '#111827' }}>{exp.jobTitle}</Text>
                 <Text style={{ fontSize: 10, color: '#6B7280' }}>{exp.startDate} — {exp.endDate || 'Present'}</Text>
               </View>
-              <Text style={{ fontSize: 10, color: '#4B5563' }}>{exp.company}</Text>
+              <Text style={{ fontSize: 10, color: '#4B5563' }}>{exp.company} {exp.location && `• ${exp.location}`}</Text>
+              {exp.description?.length > 0 && (
+                <View style={{ marginTop: 4 }}>
+                  {exp.description.map((point, i) => (
+                    <Text key={i} style={{ fontSize: 10, color: '#4B5563' }}>• {point}</Text>
+                  ))}
+                </View>
+              )}
             </View>
           ))}
         </View>
       )}
 
-      {/* Skills */}
+      {/* Education */}
+      {education && education.length > 0 && (
+        <View style={{ marginBottom: 24 }}>
+          <Text style={{ fontSize: 9, fontWeight: 600, color: '#111827', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 10 }}>Education</Text>
+          {education.map((edu, index) => (
+            <View key={index} style={{ marginBottom: 8 }}>
+              <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                <Text style={{ fontSize: 11, fontWeight: 500, color: '#111827' }}>{edu.degree}</Text>
+                <Text style={{ fontSize: 10, color: '#6B7280' }}>{edu.startDate} — {edu.endDate}</Text>
+              </View>
+              <Text style={{ fontSize: 10, color: '#4B5563' }}>{edu.institution} {edu.location && `• ${edu.location}`}</Text>
+              {edu.gpa && <Text style={{ fontSize: 10, color: '#4B5563' }}>GPA: {edu.gpa}</Text>}
+            </View>
+          ))}
+        </View>
+      )}
+
+      {/* Technical Skills */}
       {skills?.technical?.length > 0 && (
-        <View>
-          <Text style={{ fontSize: 9, fontWeight: 600, color: '#111827', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 8 }}>Skills</Text>
+        <View style={{ marginBottom: 16 }}>
+          <Text style={{ fontSize: 9, fontWeight: 600, color: '#111827', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 4 }}>Technical Skills</Text>
           <Text style={{ fontSize: 10, color: '#4B5563' }}>{skills.technical.join(' · ')}</Text>
+        </View>
+      )}
+
+      {/* Soft Skills */}
+      {skills?.soft?.length > 0 && (
+        <View style={{ marginBottom: 16 }}>
+          <Text style={{ fontSize: 9, fontWeight: 600, color: '#111827', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 4 }}>Soft Skills</Text>
+          <Text style={{ fontSize: 10, color: '#4B5563' }}>{skills.soft.join(' · ')}</Text>
+        </View>
+      )}
+
+      {/* Projects */}
+      {projects && projects.length > 0 && (
+        <View style={{ marginBottom: 24 }}>
+          <Text style={{ fontSize: 9, fontWeight: 600, color: '#111827', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 10 }}>Projects</Text>
+          {projects.map((project, index) => (
+            <View key={index} style={{ marginBottom: 8 }}>
+              <Text style={{ fontSize: 11, fontWeight: 500, color: '#111827' }}>{project.name}</Text>
+              <Text style={{ fontSize: 10, color: '#4B5563' }}>{project.description}</Text>
+              <Text style={{ fontSize: 10, color: '#4B5563'}}>Tech: {project.technologies.join(', ')}</Text>
+              {project.link && <Text style={{ fontSize: 10, color: '#4B5563'}}>Link: {project.link}</Text>}
+            </View>
+          ))}
+        </View>
+      )}
+
+      {/* Certifications */}
+      {certifications && certifications.length > 0 && (
+        <View>
+          <Text style={{ fontSize: 9, fontWeight: 600, color: '#111827', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 10 }}>Certifications</Text>
+          {certifications.map((cert, index) => (
+            <Text key={index} style={{ fontSize: 10, color: '#4B5563' }}>
+              {cert.name} — {cert.issuer} ({cert.date})
+            </Text>
+          ))}
         </View>
       )}
     </View>
