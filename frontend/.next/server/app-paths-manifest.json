@@ -1,8 +1,7 @@
 {
-  "/not-found": "app/not-found.js",
   "/templates/page": "app/templates/page.js",
   "/dashboard/page": "app/dashboard/page.js",
-  "/ai-generate/page": "app/ai-generate/page.js",
   "/login/page": "app/login/page.js",
+  "/ai-generate/page": "app/ai-generate/page.js",
   "/page": "app/page.js"
 }

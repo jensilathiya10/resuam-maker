@@ -26,7 +26,7 @@ export default function RootLayout({
           <Header />
           <main className="pt-16">
             {children}
-            {/* <Analytics/> */}
+            <Analytics/>
           </main>
           <Footer />
         </ThemeProvider>
